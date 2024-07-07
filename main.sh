@@ -18,17 +18,13 @@ error_count=0
 display_message 
 sudo journalctl -u stationd -f --no-hostname -o cat | while IFS= read -r line; do
     case "$line" in
-        *"Failed to Init VRF" | *"Failed to Validate VRF" | *"Switchyard client connection error" | *"Failed to Transact Verify pod")
+        (*"Failed to Init VRF" | *"Failed to Validate VRF" | *"Switchyard client connection error" | *"Failed to Transact Verify pod")
             echo -e "${RED}Masalah ditemukan: ${line}${NC}"
             restart_stationd
             ;;
-        *"Failed to get transaction by hash: not found")
+        (*"» Failed to get transaction by hash: not found")
             echo -e "${RED}Masalah ditemukan: Failed to get transaction by hash: not found${NC}"
             shutdown_stationd
-            spinner
-            sleep 120
-            echo -e "${GREEN}StationD Telah berhenti${NC}"
-            sleep 3
             echo -e "${GREEN}Memeriksa Pembaruan....."
             cd tracks && git pull 
             sleep 3
@@ -42,7 +38,7 @@ sudo journalctl -u stationd -f --no-hostname -o cat | while IFS= read -r line; d
             sleep 3
             restart_stationd
             ;;
-        *)
+        (*)
             if [ "$error_count" -gt 4 ]; then
                 ((error_count++))
                 echo -e "${RED}Banyak error terdeteksi...${NC}"
