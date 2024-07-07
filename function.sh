@@ -14,22 +14,22 @@ display_message() {
     local NC='\033[0m'           
     local red='\033[0;31m'       
     echo -e "${blue}"
-    # echo "   ,--,                                                                    "
-    # echo ",---.'|                           ,--.                                    "
-    # echo "|   | :      ,---,              ,--.'|                ,---,.    ,---,      "
-    # echo ":   : |     '  .' \\         ,--,:  : |       ,---.  ,'  .' |  .'  .' \`    "
-    # echo "|   ' :    /  ;    '.    ,\`--.'\`|  ' :      /__./|,---.'   |,---.'     \\   "
-    # echo ";   ; '   :  :       \\   |   :  :  | | ,---.;  ; ||   |   .'|   |  .\`\\  |  "
-    # echo "'   | |__ :  |   /\\   \\  :   |   \\ | :/___/ \\  | |:   :  |-,:   : |  '  | "
-    # echo "|   | :.'||  :  ' ;.   : |   : '  '; |\\   ;  \\ ' |:   |  ;/||   ' '  ;  : "
-    # echo "'   :    ;|  |  ;/  \\   \\'   ' ;.    ; \\   \\  \\: ||   :   .''   | ;  .  | "
-    # echo "|   |  ./ '  :  | \\  \\ ,'|   | | \\   |  ;   \\  ' .|   |  |-,|   | :  |  ' "
-    # echo ";   : ;   |  |  '  '--'  '   : |  ; .'   \\   \\   ''   :  ;/|'   : | /  ;  "
-    # echo "|   ,/    |  :  :        |   | '\`--'      \\   \`  ;|   |    \|   | '\` ,/   "
-    # echo "'---'     |  | ,'        '   : |           :   \\ ||   :   .';   :  .'     "
-    # echo "          \`--''          ;   |.'            '---\" |   | ,'  |   ,.'       "
-    # echo "                         '---'                    \`----'    '---'         "
-    # echo "                                                                          "
+    echo "   ,--,                                                                    "
+    echo ",---.'|                           ,--.                                    "
+    echo "|   | :      ,---,              ,--.'|                ,---,.    ,---,      "
+    echo ":   : |     '  .' \\         ,--,:  : |       ,---.  ,'  .' |  .'  .' \`    "
+    echo "|   ' :    /  ;    '.    ,\`--.'\`|  ' :      /__./|,---.'   |,---.'     \\   "
+    echo ";   ; '   :  :       \\   |   :  :  | | ,---.;  ; ||   |   .'|   |  .\`\\  |  "
+    echo "'   | |__ :  |   /\\   \\  :   |   \\ | :/___/ \\  | |:   :  |-,:   : |  '  | "
+    echo "|   | :.'||  :  ' ;.   : |   : '  '; |\\   ;  \\ ' |:   |  ;/||   ' '  ;  : "
+    echo "'   :    ;|  |  ;/  \\   \\'   ' ;.    ; \\   \\  \\: ||   :   .''   | ;  .  | "
+    echo "|   |  ./ '  :  | \\  \\ ,'|   | | \\   |  ;   \\  ' .|   |  |-,|   | :  |  ' "
+    echo ";   : ;   |  |  '  '--'  '   : |  ; .'   \\   \\   ''   :  ;/|'   : | /  ;  "
+    echo "|   ,/    |  :  :        |   | '\`--'      \\   \`  ;|   |    \|   | '\` ,/   "
+    echo "'---'     |  | ,'        '   : |           :   \\ ||   :   .';   :  .'     "
+    echo "          \`--''          ;   |.'            '---\" |   | ,'  |   ,.'       "
+    echo "                         '---'                    \`----'    '---'         "
+    echo "                                                                          "
     echo -e "  Monitoring Logs for ${red}Error ${blue}Message........${NC}                            "
     echo -e "${NC}"
 }
@@ -110,7 +110,7 @@ handle_errors() {
             if [ "${errors[$i]}" == "» Failed to get transaction by hash: not found" ]; then
                 shutdown_stationd
                 echo -e "${GREEN}Memeriksa Pembaruan....."
-                cd tracks && git pull 
+                cd ~/tracks && git pull 
                 sleep 3
                 echo -e "${GREEN}Pembaruan Telah Berhasil..."
                 sleep 1
@@ -123,11 +123,11 @@ handle_errors() {
                 clear
                 display_message
             fi
-                echo -e "${YELLOW}Memulai kembali StationD${NC}"
-                sleep 3
-                restart_stationd
-                clear
-                display_message
-            fi
-     done
+            echo -e "${YELLOW}Memulai kembali StationD${NC}"
+            sleep 3
+            restart_stationd
+            clear
+            display_message
+        fi
+    done
 }
