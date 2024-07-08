@@ -106,7 +106,6 @@ handle_errors() {
     for i in "${!errors[@]}"; do
         if echo "$line" | grep -q "${errors[$i]}"; then
             echo -e "${RED}Masalah ditemukan: ${messages[$i]}${NC}"
-            
             if [ "${errors[$i]}" == "» Failed to get transaction by hash: not found" ]; then
                 shutdown_stationd
                 echo -e "${GREEN}Memeriksa Pembaruan....."
@@ -118,16 +117,12 @@ handle_errors() {
                 cd ~/tracks && go run cmd/main.go rollback
                 sleep 3
                 echo -e "${GREEN}Rollback Berhasil dilakukan${NC}"
-                sleep 3
                 restart_stationd
-                clear
+                display_message
+            else
+                restart_stationd
                 display_message
             fi
-            echo -e "${YELLOW}Memulai kembali StationD${NC}"
-            sleep 3
-            restart_stationd
-            clear
-            display_message
         fi
     done
 }

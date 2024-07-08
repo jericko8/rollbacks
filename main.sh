@@ -26,16 +26,7 @@ do
         # Jika ditemukan lebih dari satu eror
         if [ "$error_count" -gt 4 ]; then
             echo -e "${RED}Error berhasil ditemukan...${NC}"
-            echo -e "${GREEN}Masuk ke HOME directory${NC}"
-            cd $HOME
-            sleep 3
-            echo -e "${YELLOW}Memberhentikan Stationd${NC}"
-            systemctl stop stationd &
-            spinner
-            spinner
-            sleep 120
-            echo -e "${GREEN}StationD Telah berhenti${NC}"
-            sleep 3
+            shutdown_stationd
             echo "${GREEN}Memeriksa Pembaruan....."
             cd tracks && git pull 
             sleep 3
@@ -46,10 +37,7 @@ do
             sleep 3
             echo -e "${GREEN}Rollback Berhasil dilakukan${NC}"
             sleep 3
-            echo -e "${YELLOW}Memulai kembali StationD${NC}"
-            systemctl restart stationd &
-            spinner
-            echo -e "${GREEN}StationD berhasil di Restart${NC}"
+            restart_stationd
             display_message
             #echo -e "${BLUE}Monitoring Logs for Error msg..${NC}"
             # Reset penghitung eror setelah menjalankan langkah-langkah
