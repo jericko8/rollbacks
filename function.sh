@@ -71,6 +71,7 @@ restart_stationd() {
     sleep 5
     echo -e "${GREEN}StationD berhasil di Restart${NC}"
     sleep 2
+    cd $HOME/rollbacks
 }
 
 #Function untuk mematikan StationD
