@@ -114,7 +114,7 @@ handle_errors() {
                 echo -e "${GREEN}Pembaruan Telah Berhasil..."
                 sleep 1
                 echo -e "${YELLOW}Memulai Rollback${NC}"
-                cd ~/tracks && go run cmd/main.go rollback
+                cd $HOME/tracks && go run cmd/main.go rollback
                 sleep 3
                 echo -e "${GREEN}Rollback Berhasil dilakukan${NC}"
                 restart_stationd

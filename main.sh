@@ -28,7 +28,7 @@ do
             echo -e "${RED}RPC Error berhasil ditemukan...${NC}"
             shutdown_stationd
             echo "${GREEN}Memeriksa Pembaruan....."
-            cd ~/tracks && git pull 
+            cd $HOME/tracks && git pull 
             sleep 3
             echo "${GREEN}Pembaruan Telah Berhasil..."
             sleep 2
