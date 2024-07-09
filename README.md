@@ -1,7 +1,3 @@
-Berikut adalah README yang diperbarui dengan tautan lisensi MIT:
-
----
-
 # Rollbacks Script for Airchain Node Monitoring
 
 Script ini digunakan untuk memantau eror pada Node Airchain, dan melakukan rollback otomatis jika diperlukan.
