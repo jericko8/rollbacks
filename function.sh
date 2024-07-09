@@ -71,7 +71,6 @@ restart_stationd() {
     sleep 5
     echo -e "${GREEN}StationD berhasil di Restart${NC}"
     sleep 2
-    clear
 }
 
 #Function untuk mematikan StationD
