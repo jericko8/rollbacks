@@ -20,15 +20,15 @@ sudo journalctl -u stationd -f --no-hostname -o cat | while IFS= read -r line
 do
     #memanggil fungsi untuk mengatasi Error selain RPC Error
     handle_errors
-    # Memeriksa jika baris mengandung kata eror
+    # Memeriksa jika baris mengandung kata RPC eror
     if echo "$line" | grep -iq "error"; then
         ((error_count++))
-        # Jika ditemukan lebih dari satu eror
+        # Jika ditemukan lebih dari 3 RPC eror
         if [ "$error_count" -gt 4 ]; then
-            echo -e "${RED}Error berhasil ditemukan...${NC}"
+            echo -e "${RED}RPC Error berhasil ditemukan...${NC}"
             shutdown_stationd
             echo "${GREEN}Memeriksa Pembaruan....."
-            cd tracks && git pull 
+            cd ~/tracks && git pull 
             sleep 3
             echo "${GREEN}Pembaruan Telah Berhasil..."
             sleep 2
