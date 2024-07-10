@@ -94,6 +94,7 @@ handle_errors() {
         "Switchyard client connection error"
         "» Failed to Transact Verify pod"
         "» Failed to get transaction by hash: not found"
+        "» VRF record is nil"
     )
     messages=(
         "Failed to Init VRF"
@@ -101,6 +102,7 @@ handle_errors() {
         "Switchyard client connection error"
         "Failed to Transact Verify pod"
         "Failed to get transaction by hash: not found"
+        "» VRF record is nil"
     )
 
     for i in "${!errors[@]}"; do
